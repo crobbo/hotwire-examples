@@ -17,10 +17,10 @@
       </time>
         <span class="ml-4">
           <%= link_to "edit", edit_post_path(@post),
+              data: { turbo_frame: "modal" },
               class: "text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-600" %> •
           <%= link_to "delete", post_path(@post),
-              method: :delete,
-              data: { confirm: "Are you sure?" },
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
               class: "text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-600" %>
         </span>
     </div>
@@ -38,5 +38,6 @@
 
 <div class="max-w-2xl mx-auto px-4 py-4 text-center text-sm text-gray-500">
   <%= link_to "new post", new_post_path,
+      data: { turbo_frame: "modal" },
       class: "text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-600" %>
 </div>

@@ -1,0 +1,15 @@
+<%# app/views/shared/_modal.html.erb %>
+<dialog data-controller="modal" data-action="click->modal#closeBackdrop" class="fixed inset-0 bg-gray-50/90 backdrop-blur-xs w-full h-full p-4 hidden has-turbo-frame-content:block">
+  <div class="relative w-full max-w-2xl mx-auto mt-20 bg-white rounded-lg shadow-md border border-gray-200">
+    <div class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors rounded-lg p-1 cursor-pointer" data-action="click->modal#closeButton">
+      <span class="sr-only">Close</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </div>
+
+    <div class="p-6">
+      <%= turbo_frame_tag "modal", target: "_top", data: { modal_target: "frame" } %>
+    </div>
+  </div>
+</dialog>
