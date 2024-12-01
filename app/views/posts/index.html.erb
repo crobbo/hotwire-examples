@@ -1,5 +1,11 @@
 <%= render 'shared/navbar' %>
 
+<div class="max-w-2xl mx-auto px-4 py-4 text-center text-sm text-gray-500 border-b border-gray-200">
+  <%= link_to "new post", new_post_path,
+      data: { turbo_frame: "modal" },
+      class: "text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-600" %>
+</div>
+
 <div class="max-w-2xl mx-auto px-4 py-12">
   <div class="space-y-16">
     <% Post.all.each do |post| %>
