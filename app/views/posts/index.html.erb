@@ -1,0 +1,26 @@
+<%= render 'shared/navbar' %>
+
+<div class="max-w-2xl mx-auto px-4 py-12">
+  <div class="space-y-16">
+    <% Post.all.each do |post| %>
+      <article class="border-b border-gray-200 pb-12">
+        <h2 class="text-2xl font-normal text-gray-900 mb-2">
+          <%= link_to post.title, post_path(post), class: "border-b border-gray-400 hover:border-gray-600" %>
+        </h2>
+
+        <div class="text-sm text-gray-600 mb-6">
+          <time datetime="<%= post.created_at.strftime('%y-%m-%d') %>">
+            <%= post.created_at.strftime('%b %d, %y') %>
+          </time>
+        </div>
+
+        <div class="text-gray-800 leading-relaxed" style="font-family: georgia, serif;">
+          <%= truncate(post.content, length: 250) %>
+        </div>
+
+        <%= link_to "read more...", post_path(post),
+            class: "inline-block mt-4 text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-600" %>
+      </article>
+    <% end %>
+  </div>
+</div>

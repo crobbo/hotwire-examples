@@ -1,0 +1,42 @@
+<%= render 'shared/navbar' %>
+
+<div class="max-w-2xl mx-auto px-4 py-4 text-center text-sm text-gray-500 border-b border-gray-200">
+  <%= link_to "home", root_path, class: "hover:text-gray-800" %> •
+  <%= link_to "archive", posts_path, class: "hover:text-gray-800" %>
+</div>
+
+<article class="max-w-2xl mx-auto px-4 py-12">
+  <header class="mb-12">
+    <h1 class="text-3xl text-gray-900 mb-3" style="font-family: georgia, serif;">
+      <%= @post.title %>
+    </h1>
+
+    <div class="text-sm text-gray-600">
+      <time datetime="<%= @post.created_at.strftime('%Y-%m-%d') %>">
+        <%= @post.created_at.strftime('%B %d, %Y') %>
+      </time>
+        <span class="ml-4">
+          <%= link_to "edit", edit_post_path(@post),
+              class: "text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-600" %> •
+          <%= link_to "delete", post_path(@post),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: "text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-600" %>
+        </span>
+    </div>
+  </header>
+
+  <div class="text-gray-800 leading-relaxed space-y-6" style="font-family: georgia, serif;">
+    <%= @post.content %>
+  </div>
+
+  <footer class="mt-16 pt-6 border-t border-gray-200">
+    <%= link_to "← back to all posts", posts_path,
+        class: "text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-600" %>
+  </footer>
+</article>
+
+<div class="max-w-2xl mx-auto px-4 py-4 text-center text-sm text-gray-500">
+  <%= link_to "new post", new_post_path,
+      class: "text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-600" %>
+</div>
