@@ -1,0 +1,22 @@
+<%= form_with model: @post, class: "space-y-6" do |f| %>
+  <div>
+    <%= f.label :title, class: "block text-sm font-medium text-gray-700 mb-2" %>
+    <%= f.text_field :title, class: "w-full rounded-md #{@post.errors[:title].any? ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
+    <% if @post.errors[:title].any? %>
+      <p class="mt-1 text-sm text-red-600"><%= @post.errors[:title].join(", ") %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :content, class: "block text-sm font-medium text-gray-700 mb-2" %>
+    <%= f.text_area :content, rows: 10, class: "w-full rounded-md #{@post.errors[:content].any? ? 'border-red-500' : 'border-gray-300'} shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
+    <% if @post.errors[:content].any? %>
+      <p class="mt-1 text-sm text-red-600"><%= @post.errors[:content].join(", ") %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.submit "Update Post",
+        class: "text-gray-600 hover:text-gray-900 hover:cursor-pointer border border-gray-400 hover:border-gray-600 px-4 py-2 rounded-md transition-colors" %>
+  </div>
+<% end %>
